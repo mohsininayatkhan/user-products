@@ -18,14 +18,13 @@ use App\Http\Controllers\Auth\LoginController;
 
 // Public routes
 Route::post('/register', [RegisterController::class, 'register']);
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/auth', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/test', function (Request $request) {
-        //var_dump($request->user());
-        return 'Mohsin';
+    Route::get('/user', function (Request $request) {
+        return $request->user();
     });
 
     Route::get('/logout', [LoginController::class, 'logout']);
