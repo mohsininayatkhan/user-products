@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-Route::get('/testing', function (Request $request) {
-    return 'Mohsin';
-});
+// Public routes
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
+// Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/test', function (Request $request) {
+        //var_dump($request->user());
         return 'Mohsin';
     });
+
+    Route::get('/logout', [LoginController::class, 'logout']);
 });
