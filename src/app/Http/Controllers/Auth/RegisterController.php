@@ -49,15 +49,4 @@ class RegisterController extends BaseController
     {
         return Auth::guard();
     }
-
-    public function login(Request $request)
-    {
-        return 'login';
-    }
-
-    public function logout(Request $request)
-    {
-        $request->user()->token()->revoke();
-        return response(['message' => 'Successfully logged out']);
-    }
 }
