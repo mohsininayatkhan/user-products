@@ -31,7 +31,7 @@ class LoginController extends BaseController
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-        return JsonResponse(['message' => 'Successfully logged out']);
+        return new JsonResponse(['message' => 'Successfully logged out'], 200);
     }
 
     protected function validator(array $data)
