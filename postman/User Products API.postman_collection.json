@@ -1,0 +1,252 @@
+{
+	"variables": [],
+	"info": {
+		"name": "User Products API",
+		"_postman_id": "a5b319c7-e633-02ad-655f-ed9c0215b6d6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"request": {
+				"url": "localhost:8080/api/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "mohsin.inayat@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "lahore042",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"url": "localhost:8080/api/logout",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "14|oAFpIqRdkPpoxrBSNGJPGEpLaxIWuiweM5cAGQ7x",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"url": "localhost:8080/api/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 7|VoOr3UVSJCrUCsbdWTA4hPY7Awag3SmInDrpVSm8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Products (Get All)",
+			"request": {
+				"url": "localhost:8080/api/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 7|VoOr3UVSJCrUCsbdWTA4hPY7Awag3SmInDrpVSm8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User Products",
+			"request": {
+				"url": "localhost:8080/api/user/products",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 7|VoOr3UVSJCrUCsbdWTA4hPY7Awag3SmInDrpVSm8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase New Product",
+			"request": {
+				"url": "localhost:8080/api/user/products",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|jNhnEgy9wEzWpTJtVtvXrXXK9PW1VDnzlfbbnRCW",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "sku",
+							"value": "traktor-pro-3",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Remove User Product",
+			"request": {
+				"url": "localhost:8080/api/user/products/traktor-pro-3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|jNhnEgy9wEzWpTJtVtvXrXXK9PW1VDnzlfbbnRCW",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"url": "localhost:8080/api/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "mohsin.inasssyatpssp@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "lahore042",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Mohsin",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "lahore042",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

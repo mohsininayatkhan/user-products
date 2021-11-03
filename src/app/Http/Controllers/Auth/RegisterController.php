@@ -23,7 +23,7 @@ class RegisterController extends BaseController
         
         $this->guard()->login($user);
 
-        return new JsonResponse([$user], 201);        
+        return new JsonResponse([$user], 201);
     }
 
     protected function validator(array $data)
