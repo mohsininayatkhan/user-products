@@ -64,4 +64,4 @@ docker-compose run --rm artisan db:seed --class=UserSeeder
 docker-compose run --rm artisan db:seed --class=ProductSeeder
 docker-compose run --rm artisan db:seed --class=PurchaseSeeder
 ```
-**Visit [localhost:3000](http://localhost:8080) after setup/installation**
+**Visit [localhost:8080](http://localhost:8080) after setup/installation**
