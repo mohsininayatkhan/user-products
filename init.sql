@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS homestead_test;
+CREATE DATABASE IF NOT EXISTS products_test;
