@@ -64,11 +64,8 @@ class LoginController extends BaseController
         $user = $this->guard()->user();
         $token = $user->createToken('authToken');
 
-        $response = [
-            'user' => $user,
-            'token' => $token->plainTextToken
-        ];
-        return new JsonResponse([$response], 200);
+        
+        return new JsonResponse(['user' => $user, 'token' => $token->plainTextToken], 200);
     }
 
     protected function sendFailedLoginResponse()
