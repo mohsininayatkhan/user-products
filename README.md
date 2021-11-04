@@ -57,7 +57,7 @@ Run database migrations
 ```sh
 docker-compose run --rm artisan migrate
 ```
-Run seeders for data import from CSV files
+Run seeders for data import from CSV files, located at /database/seeders/csvs directory
 
 ```bash
 docker-compose run --rm artisan db:seed
