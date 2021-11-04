@@ -1,6 +1,24 @@
 # Introduction
 Small containerised product service with an HTTP API.
 
+## Tech
+
+Service is developed using:
+- [Laravel] - An open-source PHP web framework
+- [MySQL] - Open-source relational database management system
+- [Nginx] - A web server that can also be used as a reverse proxy
+
+| Plugin | Description | Link |
+| ------ | ------ | ------ |
+| Senctum | For user authentication | https://laravel.com/docs/8.x/sanctum
+| GitHub | For seeding database from CSV files | https://github.com/Flynsarmy/laravel-csv-seeder
+
+#### Docker
+Easy to install and deploy in a Docker container. Use the following command examples from project root, modifying them to fit your particular use case.
+
+- `docker-compose run --rm composer update`
+- `docker-compose run --rm artisan migrate`
+
 ### Endpoints
 
 - GET '/api/products' returns all available products data.
@@ -10,9 +28,9 @@ Small containerised product service with an HTTP API.
 - A product can be attach to authenticated user (if it's not already attached) at POST 'api/user/products'.
 - A product can be removed from authenticated user at DELETE 'api/user/products'.
 
-##### Note: Postman collection is available in 'postman' directory.
+**Note: Postman collection is available in 'postman' directory.**
 
-## Install
+## setup
 
 Clone repository
 
@@ -44,4 +62,6 @@ Run seeders for data import from CSV files
 ```bash
 docker-compose run --rm artisan db:seed --class=UserSeeder
 docker-compose run --rm artisan db:seed --class=ProductSeeder
+docker-compose run --rm artisan db:seed --class=PurchaseSeeder
 ```
+**Visit [localhost:3000](http://localhost:8080) after setup/installation**
