@@ -60,8 +60,6 @@ docker-compose run --rm artisan migrate
 Run seeders for data import from CSV files
 
 ```bash
-docker-compose run --rm artisan db:seed --class=UserSeeder
-docker-compose run --rm artisan db:seed --class=ProductSeeder
-docker-compose run --rm artisan db:seed --class=PurchaseSeeder
+docker-compose run --rm artisan db:seed
 ```
 **Visit [localhost:8080](http://localhost:8080) after setup/installation**

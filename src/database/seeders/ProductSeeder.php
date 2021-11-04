@@ -11,7 +11,7 @@ class ProductSeeder extends CsvSeeder
     {
         $this->filename = base_path().'/database/seeders/csvs/products.csv';
         $this->table = 'products';
-        $this->connection = 'mysql';
+        //$this->connection = 'mysql';
         $this->timestamps = true;
         $this->created_at = Carbon::now()->toDateTimeString();
         $this->updated_at = Carbon::now()->toDateTimeString();

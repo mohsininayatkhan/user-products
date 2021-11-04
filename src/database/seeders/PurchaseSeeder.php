@@ -10,7 +10,7 @@ class PurchaseSeeder extends CsvSeeder
     {
         $this->filename = base_path().'/database/seeders/csvs/purchased.csv';
         $this->table = 'product_user';
-        $this->connection = 'mysql';
+        //$this->connection = 'mysql';
         $this->timestamps = true;
         $this->created_at = Carbon::now()->toDateTimeString();
         $this->updated_at = Carbon::now()->toDateTimeString();
