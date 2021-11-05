@@ -33,7 +33,13 @@ class UserController extends Controller
         $isPurchased = $this->productService->isAlreadyPurchased($user->id, $sku);
 
         if ($isPurchased) {
-            return new JsonResponse(['error' => 'Already exists'], 409);
+            return new JsonResponse(
+                [
+                    'message' => 'The given data was invalid.', 
+                    'errors' => [ 'sku' => 
+                        ['Already exists']
+                    ]
+                ], 409);
         }
         
         if ($this->productService->addUserProduct($user->id, $sku)) {
