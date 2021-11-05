@@ -44,4 +44,14 @@ class ProductService
             ['product_sku', '=', $sku]
         ])->delete();
     }
+
+    public function getUserUnpurchasedProducts(int $userId)
+    {
+        $purchased = DB::table('product_user')
+            ->where('user_id', $userId)
+            ->pluck('product_sku')
+            ->toArray();
+        
+        return DB::table('products')->whereNotIn('sku', $purchased)->get();
+    }
 }

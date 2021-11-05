@@ -7,6 +7,7 @@ use Tests\TestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 use App\Models\User;
 use App\Models\Purchased;
+use App\Services\ProductService;
 use Illuminate\Support\Str;
 
 class UserTest extends TestCase
@@ -156,6 +157,72 @@ class UserTest extends TestCase
                     )
                     ->etc()
             );
+        }
+    }
+
+    public function test_new_valid_sku_to_user()
+    {
+        $user = User::find(1);
+
+        if ($user) {            
+            $service =  new ProductService();
+            $products = $service->getUserUnpurchasedProducts($user->id);
+
+            if ($products) {
+                $first = $products->first();
+
+                $response = $this->actingAs($user)->postJson('/api/user/products', ['sku' => $first->sku]);
+                $response->assertStatus(201)->assertJson(fn (AssertableJson $json) => 
+                    $json->has('sku')
+                    ->where('sku', $first->sku)
+                    ->etc()
+                );
+            }
+        }
+    }
+
+    public function test_authentication_validation_for_delete_user_product()
+    {
+        $response = $this->json('DELETE', '/api/user/products/'.Str::random(8));
+
+        $response->assertStatus(401);
+    }
+
+    public function test_un_attached_product_validation_for_delete_user_product()
+    {
+        $user = User::find(1);
+
+        if ($user) { 
+            $service =  new ProductService();
+            $products = $service->getUserUnpurchasedProducts($user->id);
+
+            if ($products) {
+                $first = $products->first();
+                $response = $this->actingAs($user)->deleteJson('/api/user/products/'.$first->sku);
+                $response->assertStatus(404)->assertJson(fn (AssertableJson $json) => 
+                    $json->has('error')
+                    ->where('error', 'Record not found')
+                    ->etc()
+                );
+            }
+        }
+    }
+
+    public function test_attached_user_product_delete()
+    {
+        $purchased = Purchased::find(1);
+
+        if ($purchased) {
+            $user = User::find($purchased->user_id);
+
+            if ($user) {
+               $response = $this->actingAs($user)->deleteJson('/api/user/products/'.$purchased->product_sku);
+                $response->assertStatus(200)->assertJson(fn (AssertableJson $json) => 
+                    $json->has('success')
+                        ->where('success', 'Rmoved successfully')
+                        ->etc()
+                );
+            }
         }
     }
 }
