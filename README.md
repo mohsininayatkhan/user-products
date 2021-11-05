@@ -9,10 +9,12 @@ Service is developed using:
 - MySQL [5.7.22]
 - [Nginx] 
 
-| Plugin | Description | Link |
+#### Packages
+
+| Name | Description | Link |
 | ------ | ------ | ------ |
 | Senctum | For user authentication | https://laravel.com/docs/8.x/sanctum
-| GitHub | For seeding database from CSV files | https://github.com/Flynsarmy/laravel-csv-seeder
+| CSV Seeder | For seeding database from CSV files | https://github.com/Flynsarmy/laravel-csv-seeder
 
 #### Docker
 Easy to install and deploy in a Docker container. Use the following command examples from project root, modifying them to fit your particular use case.
