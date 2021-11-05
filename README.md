@@ -63,7 +63,7 @@ Run seeders for data import from CSV files, located at /database/seeders/csvs di
 ```bash
 docker-compose run --rm artisan db:seed
 ```
-**Visit [localhost:8080](http://localhost:8080) after setup/installation**
+**Visit [localhost:8080](http://localhost:8080) after setup/installation or use postman collection for API calls**
 
 ## Tests
 
