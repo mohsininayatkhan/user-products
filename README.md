@@ -4,9 +4,10 @@ Small containerised product service with an HTTP API.
 ## Tech
 
 Service is developed using:
-- [Laravel] - An open-source PHP web framework
-- [MySQL] - Open-source relational database management system
-- [Nginx] - A web server that can also be used as a reverse proxy
+- PHP [8.05] 
+- Laravel [8.68.1] 
+- MySQL [5.7.22]
+- [Nginx] 
 
 | Plugin | Description | Link |
 | ------ | ------ | ------ |
@@ -63,3 +64,11 @@ Run seeders for data import from CSV files, located at /database/seeders/csvs di
 docker-compose run --rm artisan db:seed
 ```
 **Visit [localhost:8080](http://localhost:8080) after setup/installation**
+
+## Test
+
+Run tests using following command
+
+```sh
+docker-compose run --rm artisan test
+```
