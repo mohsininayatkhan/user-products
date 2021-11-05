@@ -65,9 +65,9 @@ docker-compose run --rm artisan db:seed
 ```
 **Visit [localhost:8080](http://localhost:8080) after setup/installation**
 
-## Test
+## Tests
 
-Run tests using following command
+Tests will be run on seperate database. Run tests using following command
 
 ```sh
 docker-compose run --rm artisan test
