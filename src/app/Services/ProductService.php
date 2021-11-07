@@ -45,12 +45,17 @@ class ProductService
         ])->delete();
     }
 
-    public function getUserUnpurchasedProducts(int $userId)
+    public function getAllPurchasedProducts(int $userId)
     {
-        $purchased = DB::table('product_user')
+        return DB::table('product_user')
             ->where('user_id', $userId)
             ->pluck('product_sku')
             ->toArray();
+    }
+
+    public function getUserUnpurchasedProducts(int $userId)
+    {
+        $purchased = $this->getAllPurchasedProducts($userId);
         
         return DB::table('products')->whereNotIn('sku', $purchased)->get();
     }
