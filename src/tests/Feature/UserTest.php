@@ -33,7 +33,7 @@ class UserTest extends TestCase
     {
         $response = $this->json('GET', '/api/user');
 
-        $response->assertStatus(401);
+        $response->assertUnauthorized();
     }
 
     public function test_auth_response_for_valid_credentials()
@@ -102,7 +102,7 @@ class UserTest extends TestCase
     {
         $response = $this->json('POST', '/api/user/products', ['sku' => 'test']);
 
-        $response->assertStatus(401);
+        $response->assertUnauthorized();
     }
 
     public function test_sku_required_for_attach_user_products()
@@ -177,6 +177,8 @@ class UserTest extends TestCase
                     ->where('sku', $first->sku)
                     ->etc()
                 );
+
+                $this->assertTrue($service->isAlreadyPurchased($user->id, $first->sku));
             }
         }
     }
@@ -185,7 +187,7 @@ class UserTest extends TestCase
     {
         $response = $this->json('DELETE', '/api/user/products/'.Str::random(8));
 
-        $response->assertStatus(401);
+        $response->assertUnauthorized();
     }
 
     public function test_un_attached_product_validation_for_delete_user_product()
@@ -199,11 +201,13 @@ class UserTest extends TestCase
             if ($products) {
                 $first = $products->first();
                 $response = $this->actingAs($user)->deleteJson('/api/user/products/'.$first->sku);
-                $response->assertStatus(404)->assertJson(fn (AssertableJson $json) => 
+                $response->assertNotFound()->assertJson(fn (AssertableJson $json) => 
                     $json->has('error')
                     ->where('error', 'Record not found')
                     ->etc()
                 );
+
+                $this->assertFalse($service->isAlreadyPurchased($user->id, $first->sku));
             }
         }
     }
@@ -217,7 +221,7 @@ class UserTest extends TestCase
 
             if ($user) {
                $response = $this->actingAs($user)->deleteJson('/api/user/products/'.$purchased->product_sku);
-                $response->assertStatus(200)->assertJson(fn (AssertableJson $json) => 
+                $response->assertOk()->assertJson(fn (AssertableJson $json) => 
                     $json->has('success')
                         ->where('success', 'Rmoved successfully')
                         ->etc()
